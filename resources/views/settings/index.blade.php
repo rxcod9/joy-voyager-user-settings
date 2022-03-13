@@ -270,7 +270,7 @@
                             <div class="panel-body no-padding-left-right">
                                 <div class="col-md-10 no-padding-left-right">
                                     @if ($settingType->type == "text")
-                                        <input type="text" class="form-control" name="{{ $settingType->key }}" value="{{ optional($setting)->value }}">
+                                        <input type="text" class="form-control" name="{{ $settingType->key }}" value="{{ optional($setting)->value ?? '' }}">
                                     @elseif($settingType->type == "text_area")
                                         <textarea class="form-control" name="{{ $settingType->key }}">{{ optional($setting)->value ?? '' }}</textarea>
                                     @elseif($settingType->type == "rich_text_box")
