@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Joy\VoyagerUserSettings;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Joy\VoyagerUserSettings\Console\Commands\UserSettings;
+use Joy\VoyagerUserSettings\Models\UserSetting;
+use Joy\VoyagerUserSettings\Models\UserSettingType;
+use Joy\VoyagerUserSettings\Policies\UserSettingPolicy;
 use TCG\Voyager\Facades\Voyager;
 
 /**
@@ -22,12 +25,24 @@ use TCG\Voyager\Facades\Voyager;
 class VoyagerUserSettingsServiceProvider extends ServiceProvider
 {
     /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        UserSetting::class  => UserSettingPolicy::class,
+    ];
+
+    /**
      * Boot
      *
      * @return void
      */
     public function boot()
     {
+        Voyager::useModel('UserSettingType', UserSettingType::class);
+        Voyager::useModel('UserSetting', UserSetting::class);
+
         Voyager::addAction(\Joy\VoyagerUserSettings\Actions\UserSettingsAction::class);
 
         $this->registerPublishables();
@@ -41,6 +56,14 @@ class VoyagerUserSettingsServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'joy-voyager-user-settings');
+
+        $this->loadAuth();
+    }
+
+    public function loadAuth()
+    {
+        // DataType Policies
+        $this->registerPolicies();
     }
 
     /**

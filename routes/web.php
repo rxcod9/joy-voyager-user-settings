@@ -20,30 +20,26 @@ use TCG\Voyager\Facades\Voyager;
 
 Route::group(['prefix' => config('joy-voyager-user-settings.admin_prefix', 'admin')], function () {
     Route::group(['as' => 'voyager.'], function () {
-        // event(new Routing()); @deprecated
 
-        $namespacePrefix = '\\'.config('joy-voyager-user-settings.controllers.namespace').'\\';
+        $namespacePrefix = '\\' . config('joy-voyager-user-settings.controllers.namespace') . '\\';
 
         Route::group(['middleware' => 'admin.user'], function () use ($namespacePrefix) {
-            // event(new RoutingAdmin()); @deprecated
 
-            $breadController = $namespacePrefix.'VoyagerBaseController';
+            $breadController = $namespacePrefix . 'VoyagerUserSettingsController';
 
-            try {
-                foreach (Voyager::model('DataType')::all() as $dataType) {
-                    // Route::get($dataType->slug . '/user_settings', $breadController.'@user-settings')->name($dataType->slug.'.userSettings');
-                }
-            } catch (\InvalidArgumentException $e) {
-                throw new \InvalidArgumentException("Custom routes hasn't been configured because: ".$e->getMessage(), 1);
-            } catch (\Exception $e) {
-                // do nothing, might just be because table not yet migrated.
-            }
-
-            // Route::get('user_settings', $breadController.'@user-settingsAll')->name('userSettings-all');
-
-            // event(new RoutingAdminAfter()); @deprecated
+            // Settings
+            Route::group([
+                'as'     => 'users.user-settings.',
+                'prefix' => 'users/{id}/settings',
+            ], function () use ($breadController) {
+                Route::get('/', ['uses' => $breadController . '@index',        'as' => 'index']);
+                Route::post('/', ['uses' => $breadController . '@store',        'as' => 'store']);
+                Route::put('/', ['uses' => $breadController . '@update',       'as' => 'update']);
+                Route::delete('{sid}', ['uses' => $breadController . '@delete',       'as' => 'delete']);
+                Route::get('{sid}/move_up', ['uses' => $breadController . '@move_up',      'as' => 'move_up']);
+                Route::get('{sid}/move_down', ['uses' => $breadController . '@move_down',    'as' => 'move_down']);
+                Route::put('{sid}/delete_value', ['uses' => $breadController . '@delete_value', 'as' => 'delete_value']);
+            });
         });
-
-        // event(new RoutingAfter()); @deprecated
     });
 });

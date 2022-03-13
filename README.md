@@ -28,6 +28,12 @@ composer require joy/voyager-user-settings
 
 # 2. Publish
 php artisan vendor:publish --provider="Joy\VoyagerUserSettings\VoyagerUserSettingsServiceProvider" --force
+# 3. Migrate
+php artisan migrate
+# 4. Generate Permissions
+php artisan db:seed --class=Joy\VoyagerUserSettings\Database\Seeders\UserSettingsPermissionsTableSeeder
+# 4. Attach Permissions with roles
+php artisan db:seed --class=PermissionRoleTableSeeder
 ```
 
 ---
@@ -35,7 +41,7 @@ php artisan vendor:publish --provider="Joy\VoyagerUserSettings\VoyagerUserSettin
 
 ## Working Example
 
-You can try laravel demo here [https://joy-voyager.herokuapp.com/admin/users](https://joy-voyager.herokuapp.com/admin/users).
+You can try laravel demo here [https://joy-voyager.herokuapp.com/admin/users/1/settings](https://joy-voyager.herokuapp.com/admin/users/1/settings).
 
 ## Documentation
 
