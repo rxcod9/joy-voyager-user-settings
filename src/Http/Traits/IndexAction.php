@@ -2,9 +2,6 @@
 
 namespace Joy\VoyagerUserSettings\Http\Traits;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
 trait IndexAction
@@ -31,21 +28,21 @@ trait IndexAction
 
         $user = Voyager::model('User')->findOrFail($id);
 
-        $types = Voyager::model('UserSettingType')->orderBy('order', 'ASC')->get();
+        $types        = Voyager::model('UserSettingType')->orderBy('order', 'ASC')->get();
         $userSettings = Voyager::model('UserSetting')->whereUserId($id)->get();
 
-        $settingTypes = [];
-        $settings = [];
+        $settingTypes                                        = [];
+        $settings                                            = [];
         $settingTypes[__('voyager::settings.group_general')] = [];
-        $settings[__('voyager::settings.group_general')] = [];
+        $settings[__('voyager::settings.group_general')]     = [];
         foreach ($types as $d) {
             $s = $userSettings->where('user_setting_type_id', $d->id)->first();
             if ($d->group == '' || $d->group == __('voyager::settings.group_general')) {
                 $settingTypes[__('voyager::settings.group_general')][] = $d;
-                $settings[__('voyager::settings.group_general')][] = $s;
+                $settings[__('voyager::settings.group_general')][]     = $s;
             } else {
                 $settingTypes[$d->group][] = $d;
-                $settings[$d->group][] = $s;
+                $settings[$d->group][]     = $s;
             }
         }
         if (count($settingTypes[__('voyager::settings.group_general')]) == 0) {
@@ -56,7 +53,7 @@ trait IndexAction
         }
 
         $groups_data = Voyager::model('UserSettingType')->select('group')->distinct()->get();
-        $groups = [];
+        $groups      = [];
         foreach ($groups_data as $group) {
             if ($group->group != '') {
                 $groups[] = $group->group;

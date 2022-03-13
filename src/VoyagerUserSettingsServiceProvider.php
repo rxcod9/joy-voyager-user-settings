@@ -30,7 +30,7 @@ class VoyagerUserSettingsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        UserSetting::class  => UserSettingPolicy::class,
+        UserSetting::class => UserSettingPolicy::class,
     ];
 
     /**

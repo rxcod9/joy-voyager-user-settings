@@ -3,9 +3,7 @@
 namespace Joy\VoyagerUserSettings\Actions;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use TCG\Voyager\Actions\AbstractAction;
-use TCG\Voyager\Facades\Voyager;
 
 class UserSettingsAction extends AbstractAction
 {

@@ -11,7 +11,7 @@ class UserSettingPolicy extends BasePolicy
      * Determine if the given user can browse the model.
      *
      * @param \TCG\Voyager\Contracts\User $user
-     * @param  $model
+     * @param                             $model
      *
      * @return bool
      */
@@ -24,7 +24,7 @@ class UserSettingPolicy extends BasePolicy
      * Determine if the given model can be viewed by the user.
      *
      * @param \TCG\Voyager\Contracts\User $user
-     * @param  $model
+     * @param                             $model
      *
      * @return bool
      */
@@ -37,7 +37,7 @@ class UserSettingPolicy extends BasePolicy
      * Determine if the given model can be edited by the user.
      *
      * @param \TCG\Voyager\Contracts\User $user
-     * @param  $model
+     * @param                             $model
      *
      * @return bool
      */
@@ -50,7 +50,7 @@ class UserSettingPolicy extends BasePolicy
      * Determine if the given user can create the model.
      *
      * @param \TCG\Voyager\Contracts\User $user
-     * @param  $model
+     * @param                             $model
      *
      * @return bool
      */
@@ -63,7 +63,7 @@ class UserSettingPolicy extends BasePolicy
      * Determine if the given model can be deleted by the user.
      *
      * @param \TCG\Voyager\Contracts\User $user
-     * @param  $model
+     * @param                             $model
      *
      * @return bool
      */

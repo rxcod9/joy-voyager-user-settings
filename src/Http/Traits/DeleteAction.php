@@ -2,9 +2,6 @@
 
 namespace Joy\VoyagerUserSettings\Http\Traits;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
 trait DeleteAction

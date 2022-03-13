@@ -3,7 +3,6 @@
 namespace Joy\VoyagerUserSettings\Http\Traits;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
@@ -31,7 +30,7 @@ trait StoreAction
 
         $user = Voyager::model('User')->findOrFail($id);
 
-        $key = implode('.', [Str::slug($request->input('group')), $request->input('key')]);
+        $key       = implode('.', [Str::slug($request->input('group')), $request->input('key')]);
         $key_check = Voyager::model('UserSettingType')->where('key', $key)->get()->count();
 
         if ($key_check > 0) {
@@ -56,9 +55,9 @@ trait StoreAction
         $userSettingType = Voyager::model('UserSettingType')->create($request->except(['user_setting_tab', 'value']));
 
         Voyager::model('UserSetting')->create([
-            'user_id' => $id,
+            'user_id'              => $id,
             'user_setting_type_id' => $userSettingType->id,
-            'value' => null,
+            'value'                => null,
         ]);
 
         request()->flashOnly('user_setting_tab');

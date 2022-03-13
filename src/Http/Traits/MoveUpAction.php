@@ -2,9 +2,6 @@
 
 namespace Joy\VoyagerUserSettings\Http\Traits;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
 trait MoveUpAction
@@ -31,7 +28,7 @@ trait MoveUpAction
 
         $user = Voyager::model('User')->findOrFail($id);
 
-        $setting = Voyager::model('UserSetting')->whereUserId((int) $id)->whereUserSettingTypeId((int) $sid)->firstOrFail();
+        $setting     = Voyager::model('UserSetting')->whereUserId((int) $id)->whereUserSettingTypeId((int) $sid)->firstOrFail();
         $settingType = $setting->userSettingType;
 
         // Check permission
@@ -40,7 +37,7 @@ trait MoveUpAction
             $setting,
         );
 
-        $swapOrder = $settingType->order;
+        $swapOrder           = $settingType->order;
         $previousSettingType = Voyager::model('UserSettingType')
             ->where('order', '<', $swapOrder)
             ->where('group', $setting->userSettingType->group)
