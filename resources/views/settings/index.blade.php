@@ -270,25 +270,25 @@
                             <div class="panel-body no-padding-left-right">
                                 <div class="col-md-10 no-padding-left-right">
                                     @if ($settingType->type == "text")
-                                        <input type="text" class="form-control" name="{{ $settingType->key }}" value="{{ $setting->value }}">
+                                        <input type="text" class="form-control" name="{{ $settingType->key }}" value="{{ optional($setting)->value }}">
                                     @elseif($settingType->type == "text_area")
-                                        <textarea class="form-control" name="{{ $settingType->key }}">{{ $setting->value ?? '' }}</textarea>
+                                        <textarea class="form-control" name="{{ $settingType->key }}">{{ optional($setting)->value ?? '' }}</textarea>
                                     @elseif($settingType->type == "rich_text_box")
-                                        <textarea class="form-control richTextBox" name="{{ $settingType->key }}">{{ $setting->value ?? '' }}</textarea>
+                                        <textarea class="form-control richTextBox" name="{{ $settingType->key }}">{{ optional($setting)->value ?? '' }}</textarea>
                                     @elseif($settingType->type == "code_editor")
                                         <?php $options = json_decode($settingType->details); ?>
-                                        <div id="{{ $settingType->key }}" data-theme="{{ @$options->theme }}" data-language="{{ @$options->language }}" class="ace_editor min_height_400" name="{{ $settingType->key }}">{{ $setting->value ?? '' }}</div>
-                                        <textarea name="{{ $settingType->key }}" id="{{ $settingType->key }}_textarea" class="hidden">{{ $setting->value ?? '' }}</textarea>
+                                        <div id="{{ $settingType->key }}" data-theme="{{ @$options->theme }}" data-language="{{ @$options->language }}" class="ace_editor min_height_400" name="{{ $settingType->key }}">{{ optional($setting)->value ?? '' }}</div>
+                                        <textarea name="{{ $settingType->key }}" id="{{ $settingType->key }}_textarea" class="hidden">{{ optional($setting)->value ?? '' }}</textarea>
                                     @elseif($settingType->type == "image" || $settingType->type == "file")
-                                        @if(isset( $setting->value ) && !empty( $setting->value ) && Storage::disk(config('voyager.storage.disk'))->exists($setting->value))
+                                        @if(isset( optional($setting)->value ) && !empty( optional($setting)->value ) && Storage::disk(config('voyager.storage.disk'))->exists(optional($setting)->value))
                                             <div class="img_settings_container">
                                                 <a href="{{ route('voyager.users.user-settings.delete_value', [$id, $settingType->id]) }}" class="voyager-x delete_value"></a>
-                                                <img src="{{ Storage::disk(config('voyager.storage.disk'))->url($setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
+                                                <img src="{{ Storage::disk(config('voyager.storage.disk'))->url(optional($setting)->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                             </div>
                                             <div class="clearfix"></div>
-                                        @elseif($settingType->type == "file" && isset( $setting->value ))
-                                            @if(json_decode($setting->value) !== null)
-                                                @foreach(json_decode($setting->value) as $file)
+                                        @elseif($settingType->type == "file" && isset( optional($setting)->value ))
+                                            @if(json_decode(optional($setting)->value) !== null)
+                                                @foreach(json_decode(optional($setting)->value) as $file)
                                                   <div class="fileType">
                                                     <a class="fileType" target="_blank" href="{{ Storage::disk(config('voyager.storage.disk'))->url($file->download_link) }}">
                                                       {{ $file->original_name }}
@@ -301,7 +301,7 @@
                                         <input type="file" name="{{ $settingType->key }}">
                                     @elseif($settingType->type == "select_dropdown")
                                         <?php $options = json_decode($settingType->details); ?>
-                                        <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : NULL; ?>
+                                        <?php $selected_value = (isset(optional($setting)->value) && !empty(optional($setting)->value)) ? optional($setting)->value : NULL; ?>
                                         <select class="form-control" name="{{ $settingType->key }}">
                                             <?php $default = (isset($options->default)) ? $options->default : NULL; ?>
                                             @if(isset($options->options))
@@ -313,7 +313,7 @@
 
                                     @elseif($settingType->type == "radio_btn")
                                         <?php $options = json_decode($settingType->details); ?>
-                                        <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : NULL; ?>
+                                        <?php $selected_value = (isset(optional($setting)->value) && !empty(optional($setting)->value)) ? optional($setting)->value : NULL; ?>
                                         <?php $default = (isset($options->default)) ? $options->default : NULL; ?>
                                         <ul class="radio">
                                             @if(isset($options->options))
@@ -329,7 +329,7 @@
                                         </ul>
                                     @elseif($settingType->type == "checkbox")
                                         <?php $options = json_decode($settingType->details); ?>
-                                        <?php $checked = (isset($setting->value) && $setting->value == 1) ? true : false; ?>
+                                        <?php $checked = (isset(optional($setting)->value) && optional($setting)->value == 1) ? true : false; ?>
                                         @if (isset($options->on) && isset($options->off))
                                             <input type="checkbox" name="{{ $settingType->key }}" class="toggleswitch" @if($checked) checked @endif data-on="{{ $options->on }}" data-off="{{ $options->off }}">
                                         @else

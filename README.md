@@ -31,9 +31,11 @@ php artisan vendor:publish --provider="Joy\VoyagerUserSettings\VoyagerUserSettin
 # 3. Migrate
 php artisan migrate
 # 4. Generate Permissions
-php artisan db:seed --class=Joy\VoyagerUserSettings\Database\Seeders\UserSettingsPermissionsTableSeeder
-# 4. Attach Permissions with roles
+php artisan db:seed --class="\Joy\VoyagerUserSettings\Database\Seeders\UserSettingsPermissionsTableSeeder"
+# 5. Attach Permissions with roles
 php artisan db:seed --class=PermissionRoleTableSeeder
+# 6. Seed user setting types
+php artisan db:seed --class="\Joy\VoyagerUserSettings\Database\Seeders\UserSettingsTableSeeder"
 ```
 
 ---
