@@ -30,10 +30,10 @@ class UserSettings
             }
 
             $settingTypes = Voyager::model('UserSettingType')->orderBy('order')->get();
-            $settings = Voyager::model('UserSetting')->whereUserId($user->getKey())->get();
+            $settings     = Voyager::model('UserSetting')->whereUserId($user->getKey())->get();
             foreach ($settingTypes as $settingType) {
-                $setting = $settings->where('user_setting_type_id', $settingType->id)->first();
-                $keys = explode('.', $settingType->key);
+                $setting                                  = $settings->where('user_setting_type_id', $settingType->id)->first();
+                $keys                                     = explode('.', $settingType->key);
                 @self::$setting_cache[$keys[0]][$keys[1]] = optional($setting)->value ?? null;
 
                 if ($globalCache) {
