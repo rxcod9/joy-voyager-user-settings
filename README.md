@@ -43,7 +43,7 @@ php artisan db:seed --class="\Joy\VoyagerUserSettings\Database\Seeders\UserSetti
 
 ## Working Example
 
-You can try laravel demo here [https://joy-voyager.herokuapp.com/admin/users/1/settings](https://joy-voyager.herokuapp.com/admin/users/1/settings).
+You can try laravel demo here [https://joy-voyager.herokuapp.com/admin/users/1/user-settings](https://joy-voyager.herokuapp.com/admin/users/1/user-settings).
 
 ## Documentation
 

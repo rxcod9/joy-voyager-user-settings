@@ -30,7 +30,7 @@ Route::group(['prefix' => config('joy-voyager-user-settings.admin_prefix', 'admi
             // Settings
             Route::group([
                 'as'     => 'users.user-settings.',
-                'prefix' => 'users/{id}/settings',
+                'prefix' => 'users/{id}/user-settings',
             ], function () use ($breadController) {
                 Route::get('/', ['uses' => $breadController . '@index',        'as' => 'index']);
                 Route::post('/', ['uses' => $breadController . '@store',        'as' => 'store']);
