@@ -30,7 +30,7 @@ trait DeleteAction
 
         $setting = Voyager::model('UserSetting')->whereUserId((int) $id)->whereUserSettingTypeId((int) $sid)->firstOrFail();
 
-        Voyager::model('UserSetting')->whereUserId($id)->destroy($sid);
+        Voyager::model('UserSetting')->whereUserId($id)->delete($sid);
 
         request()->session()->flash('user_setting_tab', $setting->userSettingType->group);
 
