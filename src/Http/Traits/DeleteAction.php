@@ -26,13 +26,14 @@ trait DeleteAction
             Voyager::model('UserSetting'),
         );
 
-        $user = Voyager::model('User')->findOrFail($id);
+        Voyager::model('User')->findOrFail($id);
 
-        $setting = Voyager::model('UserSetting')->whereUserId((int) $id)->whereUserSettingTypeId((int) $sid)->firstOrFail();
+        $settingType = Voyager::model('UserSettingType')->findOrFail((int) $sid);
 
-        Voyager::model('UserSetting')->whereUserId($id)->delete($sid);
+        Voyager::model('UserSetting')->whereUserId($id)->whereUserSettingTypeId($sid)->delete();
+        Voyager::model('UserSettingType')->destroy($sid);
 
-        request()->session()->flash('user_setting_tab', $setting->userSettingType->group);
+        request()->session()->flash('user_setting_tab', $settingType->group);
 
         return back()->with([
             'message'    => __('voyager::settings.successfully_deleted'),
