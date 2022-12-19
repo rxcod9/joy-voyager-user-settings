@@ -3,6 +3,7 @@
 namespace Joy\VoyagerUserSettings\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Permission;
 
 class UserSettingsPermissionsTableSeeder extends Seeder
@@ -12,6 +13,6 @@ class UserSettingsPermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        Permission::generateFor('user_settings');
+        Voyager::model('Permission')->generateFor('user_settings');
     }
 }

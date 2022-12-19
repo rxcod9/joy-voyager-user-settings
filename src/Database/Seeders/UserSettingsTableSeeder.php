@@ -246,7 +246,7 @@ class UserSettingsTableSeeder extends Seeder
      */
     protected function findSettingType($key)
     {
-        return UserSettingType::firstOrNew(['key' => $key]);
+        return Voyager::model('UserSettingType')->firstOrNew(['key' => $key]);
     }
 
     /**
@@ -258,6 +258,6 @@ class UserSettingsTableSeeder extends Seeder
      */
     protected function findSetting($key)
     {
-        return UserSetting::firstOrNew(['key' => $key]);
+        return Voyager::model('UserSetting')->firstOrNew(['key' => $key]);
     }
 }

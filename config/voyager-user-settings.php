@@ -47,4 +47,17 @@ return [
     'controllers' => [
         'namespace' => 'Joy\\VoyagerUserSettings\\Http\\Controllers',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database Config
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify voyager database settings
+    |
+    */
+
+    'database' => [
+        'autoload_migrations' => env('VOYAGER_USER_SETTINGS_DATABASE_AUTOLOAD_MIGRATIONS', true),
+    ],
 ];
