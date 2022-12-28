@@ -4,10 +4,10 @@ This [Laravel](https://laravel.com/)/[Voyager](https://voyager.devdojo.com/) mod
 
 By 🐼 [Ramakant Gangwar](https://github.com/rxcod9).
 
-[![Screenshot](https://raw.githubusercontent.com/rxcod9/joy-voyager-user-settings/main/cover.jpg)](https://joy-voyager.herokuapp.com/)
+[![Screenshot](https://raw.githubusercontent.com/rxcod9/joy-voyager-user-settings/main/cover.jpg)](https://joy-voyager.kodmonk.com/)
 
 [![Latest Version](https://img.shields.io/github/v/release/rxcod9/joy-voyager-user-settings?style=flat-square)](https://github.com/rxcod9/joy-voyager-user-settings/releases)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rxcod9/joy-voyager-user-settings/run-tests?label=tests)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/rxcod9/joy-voyager-user-settings/run-tests.yml?branch=main&label=tests)
 [![Total Downloads](https://img.shields.io/packagist/dt/joy/voyager-user-settings.svg?style=flat-square)](https://packagist.org/packages/joy/voyager-user-settings)
 
 ---
@@ -43,7 +43,7 @@ php artisan db:seed --class="\Joy\VoyagerUserSettings\Database\Seeders\UserSetti
 
 ## Working Example
 
-You can try laravel demo here [https://joy-voyager.herokuapp.com/admin/users/1/user-settings](https://joy-voyager.herokuapp.com/admin/users/1/user-settings).
+You can try laravel demo here [https://joy-voyager.kodmonk.com/admin/users/1/user-settings](https://joy-voyager.kodmonk.com/admin/users/1/user-settings).
 
 ## Documentation
 
