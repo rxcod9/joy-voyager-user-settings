@@ -3,8 +3,6 @@
 namespace Joy\VoyagerUserSettings\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Joy\VoyagerUserSettings\Models\UserSetting;
-use Joy\VoyagerUserSettings\Models\UserSettingType;
 use TCG\Voyager\Facades\Voyager;
 
 class UserSettingsTableSeeder extends Seeder
