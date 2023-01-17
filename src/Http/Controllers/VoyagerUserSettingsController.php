@@ -3,7 +3,7 @@
 namespace Joy\VoyagerUserSettings\Http\Controllers;
 
 use Joy\VoyagerUserSettings\Http\Traits\CrudActions;
-use TCG\Voyager\Http\Controllers\Controller as TCGVoyagerController;
+use Joy\VoyagerCore\Http\Controllers\Controller as TCGVoyagerController;
 
 class VoyagerUserSettingsController extends TCGVoyagerController
 {
