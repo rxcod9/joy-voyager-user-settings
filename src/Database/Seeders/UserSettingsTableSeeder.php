@@ -197,16 +197,16 @@ class UserSettingsTableSeeder extends Seeder
                 'details'      => json_encode([
                     'default' => null,
                     'options' => [
-                        null      => 'Select date format',
-                        'F j, Y'  => 'F j, Y [' . date('F j, Y') . ']',
-                        'm.d.y'   => 'm.d.y [' . date('m.d.y') . ']',
-                        'j, n, Y' => 'j, n, Y [' . date('j, n, Y') . ']',
-                        'Ymd'     => 'Ymd [' . date('Ymd') . ']',
+                        null        => 'Select date format',
+                        'F j, Y'    => 'F j, Y [' . date('F j, Y') . ']',
+                        'm.d.y'     => 'm.d.y [' . date('m.d.y') . ']',
+                        'j, n, Y'   => 'j, n, Y [' . date('j, n, Y') . ']',
+                        'Ymd'       => 'Ymd [' . date('Ymd') . ']',
                         // 'h-i-s, j-m-y, it is w Day' => 'h-i-s, j-m-y, it is w Day [' . date('h-i-s, j-m-y, it is w Day') . ']',
                         // '\i\t \i\s \t\h\e jS \d\a\y.' => '\i\t \i\s \t\h\e jS \d\a\y. [' . date('\i\t \i\s \t\h\e jS \d\a\y.') . ']',
                         'D M j T Y' => 'D M j T Y [' . date('D M j T Y') . ']',
                         // "H:i:s" => "H:i:s [" . date("H:i:s") . ']',
-                        'Y-m-d' => 'Y-m-d [' . date('Y-m-d') . ']',
+                        'Y-m-d'     => 'Y-m-d [' . date('Y-m-d') . ']',
                     ],
                 ]),
             ])->save();
